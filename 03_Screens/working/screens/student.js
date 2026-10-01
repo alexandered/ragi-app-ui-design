@@ -82,10 +82,16 @@
         (berhasil ? '<button class="btn btn--tonal btn--sm btn--block" data-act="nextBatch" data-id="' + r.id + '">' + ic("copy") + '<span class="btn__label">Gunakan untuk batch berikutnya</span></button>' : "");
     } else if (trials.length >= 2) actions = '<button class="btn btn--secondary btn--block" data-act="compareRecipe" data-id="' + r.id + '">' + ic("git-compare") + '<span class="btn__label">Bandingkan</span></button>';
     var base = "";
-    if (r.base && r.base.length) {
+    if (r.base && r.base.length) { // D-033: one summary card that opens in place, so the trial history is not pushed down by the full table
+      var open = st === "baseopen" || !!S6open[r.id], names = r.base.map(function (b) { return b.name; });
+      var preview = names.slice(0, 3).join(", ") + (names.length > 3 ? ", +" + (names.length - 3) + " lainnya" : "");
       base = '<div class="sect-head"><h2 class="section-title">Bahan resep</h2><span class="badge badge--source">' + ic("badge-check") + "Dari admin</span></div>" +
-        '<div class="pad stack stack--sm"><p class="base-note">Untuk ' + r.basePortions + " porsi · " + r.base.length + " bahan · diatur admin RAGI, tidak bisa diubah di sini.</p>" + h.ingTable(r.base) +
-        '<button class="btn btn--tonal btn--sm btn--block" data-act="startBase" data-id="' + r.id + '">' + ic("book-open", "icon--sm") + '<span class="btn__label">Mulai trial dari bahan ini</span></button></div>';
+        '<div class="pad"><div class="disclosure' + (open ? " is-open" : "") + '"><button class="disclosure__head" data-act="baseToggle" data-id="' + r.id + '" aria-expanded="' + open + '" aria-controls="base-' + r.id + '">' +
+        '<span class="disclosure__text"><span class="disclosure__title">' + r.base.length + " bahan · untuk " + r.basePortions + ' porsi</span><span class="disclosure__sub">' + esc(preview) + "</span></span>" +
+        '<span class="disclosure__more">' + (open ? "Tutup" : "Lihat") + ic("chevron-down", "icon--sm") + "</span></button>" +
+        '<div class="disclosure__body" id="base-' + r.id + '"' + (open ? "" : " hidden") + ">" + h.ingTable(r.base) +
+        '<p class="disclosure__note">Diatur admin RAGI, tidak bisa diubah di sini.</p>' +
+        '<button class="btn btn--tonal btn--sm btn--block" data-act="startBase" data-id="' + r.id + '">' + ic("book-open", "icon--sm") + '<span class="btn__label">Mulai trial dari bahan ini</span></button></div></div></div>';
     }
     var list;
     if (!trials.length) list = h.empty({ icon: "flask-conical", title: "Belum ada trial", body: ro ? "Belum ada trial untuk resep ini." : "Catat percobaan pertamamu di sini.", cta: ro ? null : { label: "Buat trial pertama", act: "newTrial", attrs: 'data-id="' + r.id + '"', icon: "plus" } });
@@ -97,9 +103,17 @@
   App.defineScreen({
     id: "S6", name: "Detail resep", group: "Resep", role: "both", stories: ["REC-04", "REC-05", "HIS-01", "STB-01", "CPY-01", "CMP-01", "CHF-03"], tag: "CR-02", tab: "resep",
     tabbar: true,
-    states: [["auto", "Data nyata"], ["notrials", "Belum ada trial"], ["nostable", "Belum ada Stable"], ["filterempty", "Filter kosong"], ["loading", "Memuat"], ["error", "Error"]],
+    states: [["auto", "Data nyata"], ["baseopen", "Bahan resep dibuka"], ["notrials", "Belum ada trial"], ["nostable", "Belum ada Stable"], ["filterempty", "Filter kosong"], ["loading", "Memuat"], ["error", "Error"]],
     defaults: function () { return { recipeId: "r1" }; },
     render: function (c) { return recipeDetail(c); }
+  });
+  var S6open = {}; // recipe id -> base ingredients opened (kept while the prototype runs)
+  App.act("baseToggle", function (el) { // in place, so focus and scroll stay on the button
+    var id = el.dataset.id, open = el.getAttribute("aria-expanded") !== "true", box = el.parentNode;
+    S6open[id] = open; if (App.stateOf("S6") === "baseopen") { App.states.S6 = "auto"; App.renderPanel(); }
+    el.setAttribute("aria-expanded", open); box.classList.toggle("is-open", open);
+    box.querySelector(".disclosure__body").hidden = !open;
+    el.querySelector(".disclosure__more").firstChild.nodeValue = open ? "Tutup" : "Lihat";
   });
   App.act("vfilter", function (el) { App.top().params.filter = el.dataset.v; if (App.stateOf(App.top().id) === "filterempty") App.states[App.top().id] = "auto"; App.render(); });
   App.act("newTrial", function (el) { App.startTrial(el.dataset.id); });

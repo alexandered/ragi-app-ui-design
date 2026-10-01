@@ -283,6 +283,23 @@ button { cursor: pointer; }
 .irow__qty { grid-column: 2; grid-row: 1; text-align: right; font: 600 var(--t-number-size)/var(--t-number-line) var(--font-heading); font-variant-numeric: tabular-nums lining-nums; }
 .irow__pct { grid-column: 2; grid-row: 2; justify-self: end; }
 
+/* ---- disclosure card (D-033): a one-line summary that opens in place. S6 "Bahan resep" ---- */
+.disclosure { background: var(--c-surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); overflow: hidden; }
+.disclosure__head { display: flex; width: 100%; align-items: center; gap: var(--s-3); min-height: 72px; padding: var(--s-3) var(--s-4); border: 0; background: transparent; color: var(--c-ink); text-align: left; border-radius: var(--r-lg); }
+.disclosure__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.disclosure__title { font: 600 var(--t-label-size)/var(--t-label-line) var(--font-heading); }
+.disclosure__sub { font: 400 var(--t-caption-size)/var(--t-caption-line) var(--font-heading); color: var(--c-body); }
+.disclosure__more { display: inline-flex; align-items: center; gap: var(--s-1); flex: none; color: var(--c-gold-deep); font: 600 var(--t-caption-size)/1 var(--font-heading); }
+.disclosure__more .icon { transition: transform var(--m-fast) var(--m-spring); }
+.disclosure.is-open .disclosure__more .icon { transform: rotate(180deg); }
+.disclosure__body { display: flex; flex-direction: column; gap: var(--s-3); padding: 0 0 var(--s-4); }
+.disclosure__body[hidden] { display: none; }
+.disclosure__body .itable { border-radius: 0; box-shadow: none; border-top: 2px solid var(--c-line); border-bottom: 2px solid var(--c-line); }
+.disclosure__note { margin: 0 var(--s-4); font: 400 var(--t-caption-size)/var(--t-caption-line) var(--font-heading); color: var(--c-body); }
+.disclosure__body > .btn { margin: 0 var(--s-4); }
+.disclosure__body > .btn--block { width: auto; }
+@media (prefers-reduced-motion: reduce) { .disclosure__more .icon { transition: none; } }
+
 /* ---- compare (CMP-01) [CR-02]: name spans the row, values sit beneath. The title bar sticks while the table scrolls; unchanged rows stay tight so the changes stand out ---- */
 .cmp { background: var(--c-surface); border-radius: var(--r-lg); box-shadow: var(--shadow-1); overflow: clip; } /* clip, not hidden: keeps the rounded corners without making .cmp a scroll container, which would stop .cmp__titles from sticking */
 .cmp__titles, .cmp__meta, .cmp__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); padding: var(--s-3) var(--s-4); }

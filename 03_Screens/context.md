@@ -11,6 +11,7 @@ Stage 3 of 4. Design every screen and state as a clickable HTML prototype.
 ## Status (2026-09-30)
 Round 1 built: all 19 screens and 12 overlays, every state reachable, in `working/` and marked `review` in `board.json`. Nothing is promoted to `reference/` until RAGI accepts it (stage 4). See `working/README.md` for how to run it and what was checked.
 2026-10-01: S8, S19 and the S7 ingredient rows polished after the critique (D-029, D-031) and photos made local (D-030). Next: S6 "Bahan resep", the text floor.
+2026-10-01: S6 "Bahan resep" is a closed summary card and the text floor is 14 px (13 px for uppercase section titles) (D-033). Every critique item is closed. Next: the RAGI review (stage 4).
 
 ## Current priorities (round 1 done; next is review)
 1. Student core loop first: S3, S4, S6, S7 (with empty, validation and saving states), S8, S9.

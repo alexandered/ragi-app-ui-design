@@ -58,13 +58,13 @@
   --t-label-tracking: 0.01em;
   --t-overline-family: var(--font-heading);
   --t-overline-weight: 600;
-  --t-overline-size: calc(12px * var(--ts));
-  --t-overline-line: calc(16px * var(--ts));
+  --t-overline-size: calc(13px * var(--ts));
+  --t-overline-line: calc(18px * var(--ts));
   --t-overline-tracking: 0.08em;
   --t-caption-family: var(--font-heading);
   --t-caption-weight: 400;
-  --t-caption-size: calc(13px * var(--ts));
-  --t-caption-line: calc(18px * var(--ts));
+  --t-caption-size: calc(14px * var(--ts));
+  --t-caption-line: calc(20px * var(--ts));
   --t-caption-tracking: 0;
   --t-number-family: var(--font-heading);
   --t-number-weight: 500;

@@ -37,7 +37,7 @@ Students do not create, edit or delete recipes; the admin backend does. REC-01, 
 - **States:** no trials ("Buat trial pertama"); no Stable Trial; populated; filter with no results ("Belum ada trial dengan verdict ini"); loading; error.
 - **Feel:** Stable card is the friendliest, largest element on the screen; a soft confetti-like burst when a Stable Trial is set.
 
-- **Update (D-027, D-028):** S6 has no menu (no edit or delete of the recipe). It opens with a large food photo, then the "Bahan resep" section (read-only, from the admin: portions, ingredients, baker's %, and "Mulai trial dari bahan ini") before the trial history. "Trial baru" opens O13.
+- **Update (D-027, D-028):** S6 has no menu (no edit or delete of the recipe). It opens with a large food photo, then the "Bahan resep" section (read-only, from the admin: portions, ingredients, baker's %, and "Mulai trial dari bahan ini") before the trial history. "Trial baru" opens O13. The section is a closed summary card that opens in place (D-033).
 
 ### S7 Trial Editor · All · TRL-01, TRL-02, TRL-05, CPY-02, ING-01, ING-02, ING-03, SCL-02, CPY-01, MET-01
 - **Shows:** date (O4, no future), portions (whole number 1 to 9999), ingredient list (see below), "Skalakan" action, **Dough metrics panel** [CR-01], verdict control (Berhasil / Gagal / Belum dinilai), Result, Notes, "Perubahan untuk trial berikutnya" (three separate text areas, 2.000 characters max), "Simpan".

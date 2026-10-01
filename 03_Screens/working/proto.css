@@ -83,7 +83,6 @@ body { overflow: hidden; }
 .link-row--sub .link-row__sub { font: 400 var(--t-caption-size)/var(--t-caption-line) var(--font-heading); color: var(--c-muted); }
 .link-row--sub .link-row__ic { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex: none; border-radius: var(--r-md); background: var(--c-gold-tint); }
 .link-row--sub[disabled] { opacity: .55; cursor: not-allowed; }
-.base-note { margin: 0; font: 400 var(--t-caption-size)/var(--t-caption-line) var(--font-heading); color: var(--c-body); }
 .link-row .chev { margin-left: auto; color: var(--c-muted); }
 .sect-head { display: flex; align-items: center; justify-content: space-between; min-height: var(--z-tap); margin: var(--s-4) var(--gutter) var(--s-1); }
 .sect-head .section-title { margin: 0; }

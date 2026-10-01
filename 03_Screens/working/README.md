@@ -4,7 +4,7 @@ Clickable HTML prototype of the PRD v0.5 scope in Bahasa Indonesia: 13 screens (
 
 ## Run it
 ```bash
-cd "/Users/alex/Desktop/working-space/RAGI APP/UI_Design" && python3 serve.py
+python3 serve.py   # from the repo root
 ```
 Open http://localhost:8765/03_Screens/working/index.html. A server is needed because the prototype loads fonts and scripts by relative path; `serve.py` sends no-cache headers so edits show on reload.
 
@@ -51,11 +51,15 @@ Design system files are read from `../../02_Design_System/reference/` (tokens, c
 - S7 two-line rows (D-031), 24 combinations (six states at 390 and 360 px, text scale 1 and 1.3): no overflow, tap targets at least 44 px, gutter intact, no clipped grams. At 100 % every row is two lines at 390 and 360 px (128 px; 154 with a brand caption), including a stress row (one flour at 100,0 %, an 8-digit quantity, a 28-character name, "Lainnya"). 22 scripted interactions pass: add, suggestions, type picker, grams updating the metrics, Lanjutan, delete and undo, keyboard and pointer reorder, validation and aria wiring.
 - Fixed on the way: `?ts=1.3` blanked the prototype because `boot.js` set the text scale before the first screen existed.
 
+## Checks run on 2026-10-01 (S6 "Bahan resep" and the text floor, D-033)
+- 236 combinations (every screen and overlay in every state, at 390 × 844 and 360 × 640, at text scale 1 and 1.3): no horizontal scroll, no element outside the phone, every tap target at least 44 px, no clipped text, no `undefined`/`NaN`, no script errors. The checker was itself tested against a planted 30 px button and a 600 px block.
+- S6: "Riwayat trial" starts at y=775 below the app bar instead of y=1,385 with the card closed. The card opens and closes by click and by Enter, keeps focus on its button, and updates `aria-expanded` and the body's `hidden`.
+- No text inside the phone is below 14 px except section titles (13 px uppercase) and the `CR` review tag.
+
 ## Photos (D-027, D-030)
 Recipe photos are local copies of Wikimedia Commons files in `assets/photos/` (7 recipes, hero 960 px and thumb 250 px, 1.5 MB), so the prototype works offline. Licences and credits: `photo-credits.html`. The real photos come from the admin backend.
 
 ## Not done or not verified
-- Still open from the critique: S6 "Bahan resep" before the trial history, and the 13 px secondary text floor.
 - Real devices, real fonts rendering on Android, and a screen-reader pass.
 - Keyboard: handles reorder with arrow keys; full focus-order review is pending.
 - The date picker cannot show disabled future days because the prototype's "today" (30 Sep 2026) is the last day of the month; the next-month arrow is disabled instead.

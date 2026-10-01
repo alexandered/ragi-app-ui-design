@@ -16,7 +16,7 @@ S1–S19 with roles, stories and states, plus the overlays the stories imply (O1
 | S3 | Dashboard | Both | PRD §5.2 [ASSUMPTION: recent recipes and a quick "New trial"] | empty (first use), populated | |
 | S4 | Recipes (list with photos, search, filter) | Student | REC-02 | empty, no results, loading, error | CR-04 |
 | S5 | ~~Create / Edit Recipe~~ removed (D-028): recipes come from the admin | n/a | REC-01, REC-03, REC-04 retired | n/a | CR-04 |
-| S6 | Recipe Detail (photo, base ingredients, Stable Trial + history) | Student | REC-05, HIS-01, STB-01, CPY-01, CMP-01 | no trials, no stable trial, populated, verdict filter with no results | CR-02 (Compare entry) |
+| S6 | Recipe Detail (photo, base ingredients, Stable Trial + history) | Student | REC-05, HIS-01, STB-01, CPY-01, CMP-01 | no trials, no stable trial, populated, base ingredients opened, verdict filter with no results | CR-02 (Compare entry) |
 | S7 | Trial Editor (new / copy / scaled / edit) | Student | TRL-01, TRL-02, ING-01 to ING-03, SCL-02, CPY-01, MET-01 | unsaved-changes guard, validation, saving, metrics without flour | CR-01 (types, water content, metrics) |
 | S8 | Trial Detail | Student | TRL-04, STB-01, HIS-01, CPY-01, SCL-01, PDF-01, MET-01, CMP-01 | stable badge, verdict badge, source label, dough metrics | CR-01 (metrics), CR-02 (Compare entry) |
 | S9 | Scale Recipe sheet (from trial and from editor) | Student | SCL-01, SCL-02 | invalid portions, preview | |
