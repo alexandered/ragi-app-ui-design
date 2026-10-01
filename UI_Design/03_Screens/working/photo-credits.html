@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kredit foto</title>
+<link rel="stylesheet" href="../../02_Design_System/reference/tokens.css">
+<style>
+  body { margin: 0; padding: 24px; font: 400 16px/1.5 var(--font-body); background: var(--c-page); color: var(--c-ink); }
+  main { max-width: 760px; margin: 0 auto; }
+  h1 { font: 700 24px/1.2 var(--font-heading); margin: 0 0 8px; }
+  p { color: var(--c-body); }
+  ul { list-style: none; padding: 0; display: grid; gap: 12px; }
+  li { display: flex; gap: 16px; align-items: center; background: var(--c-surface); border-radius: 20px; padding: 12px; }
+  img { width: 96px; height: 96px; object-fit: cover; border-radius: 14px; background: var(--c-gold-tint); flex: none; }
+  b { font-family: var(--font-heading); } small { color: var(--c-muted); font-family: var(--font-heading); }
+  a { color: var(--c-gold-deep); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Kredit foto</h1>
+  <p>Foto makanan di prototipe ini diambil langsung dari Wikimedia Commons hanya untuk keperluan tinjauan desain. Di aplikasi sebenarnya, foto datang dari admin backend bersama resepnya.</p>
+  <ul id="list"></ul>
+</main>
+<script src="../../02_Design_System/reference/logic.js"></script>
+<script src="data.js"></script>
+<script>
+  var names = {}; DB.recipes.forEach(function (r) { names[r.id] = r.name; });
+  document.getElementById("list").innerHTML = Object.keys(DB.PHOTOS).map(function (id) {
+    var p = DB.PHOTOS[id];
+    return '<li><img src="' + p.thumb + '" alt="" referrerpolicy="no-referrer"><div><b>' + names[id] + '</b><br><small>' + p.license + (p.artist ? " · " + p.artist : "") + '</small><br><a href="' + p.page + '" target="_blank" rel="noopener">Halaman file di Wikimedia Commons</a></div></li>';
+  }).join("");
+</script>
+</body>
+</html>

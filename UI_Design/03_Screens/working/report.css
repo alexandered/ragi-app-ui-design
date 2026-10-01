@@ -1,0 +1,33 @@
+/* A4 report layout (PDF-01). Used by the S10 preview (scaled) and by report.html (print). */
+.a4-wrap { background: #DAD6D6; padding: var(--s-4); display: flex; justify-content: center; }
+.a4-scale { width: calc(210mm * .4); height: calc(297mm * .4); position: relative; overflow: hidden; box-shadow: var(--shadow-2); }
+.a4-scale .a4 { transform: scale(.4); transform-origin: top left; position: absolute; top: 0; left: 0; }
+.a4 { flex: none; width: 210mm; min-height: 297mm; background: #fff; color: var(--c-ink); padding: 12mm 15mm 10mm; font: 400 10pt/1.4 var(--font-body); box-shadow: var(--shadow-2); }
+.a4 h1 { font: 700 18pt/1.2 var(--font-heading); margin: 0; }
+.a4 .rp-head { display: flex; align-items: center; justify-content: space-between; background: var(--c-ink); color: var(--c-on-ink); margin: -12mm -15mm 5mm; padding: 6mm 15mm; }
+.a4 .rp-head img { height: 11mm; }
+.a4 .rp-head h1 { color: var(--c-on-ink); font-size: 16pt; text-align: right; }
+.a4 h2 { font: 700 9pt/1 var(--font-heading); letter-spacing: .08em; text-transform: uppercase; color: var(--c-gold-deep); margin: 4mm 0 1.5mm; padding-bottom: 1mm; border-bottom: 0.4mm solid var(--c-gold); }
+.a4 dl { display: grid; grid-template-columns: 34mm 1fr; gap: 0.6mm 4mm; margin: 0; font-size: 10pt; }
+.a4 dt { font: 500 9.5pt var(--font-heading); color: var(--c-muted); } .a4 dd { margin: 0; font-weight: 600; }
+.a4 table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+.a4 th { font: 600 8.5pt var(--font-heading); text-align: left; text-transform: uppercase; letter-spacing: .04em; color: var(--c-body); border-bottom: 0.4mm solid var(--c-ink); padding: 1.5mm 2mm; }
+.a4 td { padding: 1mm 2mm; border-bottom: 0.25mm solid var(--c-line); font-variant-numeric: tabular-nums lining-nums; }
+.a4 td.num, .a4 th.num { text-align: right; }
+.a4 tr { break-inside: avoid; }
+.a4 .rp-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+.a4 .rp-metrics div { background: var(--c-gold-tint); border-radius: 2mm; padding: 2mm 3mm; }
+.a4 .rp-metrics b { display: block; font: 700 12pt var(--font-heading); }
+.a4 .rp-metrics span { font: 500 8pt var(--font-heading); color: var(--c-body); }
+.a4 p { margin: 0; white-space: pre-wrap; }
+.a4 .rp-foot { margin-top: 6mm; padding-top: 2mm; border-top: 0.25mm solid var(--c-line); display: flex; justify-content: space-between; font: 400 8pt var(--font-heading); color: var(--c-muted); }
+.a4 .rp-verdict { display: inline-block; padding: 0.5mm 3mm; border-radius: 99mm; font: 700 9pt var(--font-heading); }
+.rp-verdict--berhasil { background: var(--c-berhasil-fill); color: var(--c-berhasil-ink); }
+.rp-verdict--gagal { background: var(--c-gagal-fill); color: var(--c-gagal-ink); }
+.rp-verdict--belum { background: var(--c-belum-fill); color: var(--c-belum-ink); }
+.rp-verdict--stable { background: var(--c-gold); color: var(--c-on-gold); }
+
+
+.a4, .a4 * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+@page { size: A4 portrait; margin: 0 0 12mm; @bottom-center { content: "RAGI Academy · Halaman " counter(page) " dari " counter(pages); font: 8pt 'IBM Plex Sans', sans-serif; color: #6E6767; } }
+@media print { body { overflow: visible; background: #fff; } .a4 { box-shadow: none; margin: 0; } .a4 .rp-foot span:last-child { display: none; } }

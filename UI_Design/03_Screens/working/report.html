@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laporan Trial Resep (cetak A4)</title>
+<link rel="stylesheet" href="../../02_Design_System/reference/tokens.css">
+<link rel="stylesheet" href="../../02_Design_System/reference/components.css">
+<link rel="stylesheet" href="report.css">
+<style>
+  body { overflow: auto; background: #DAD6D6; }
+  .bar { position: sticky; top: 0; display: flex; gap: 12px; align-items: center; padding: 12px 20px; background: var(--c-ink); color: var(--c-on-ink); font: 500 14px var(--font-heading); z-index: 5; }
+  .bar button { min-height: 40px; padding: 0 18px; border-radius: 999px; border: 0; background: var(--c-gold); color: var(--c-on-gold); font: 700 14px var(--font-heading); }
+  .page { display: flex; justify-content: center; padding: 24px; }
+  @media print { .bar { display: none; } .page { padding: 0; display: block; } body { background: #fff; } }
+</style>
+</head>
+<body>
+<div class="bar"><span>Tata letak laporan PDF (A4 tegak). Cetak ke PDF dari browser.</span><button onclick="window.print()">Cetak / simpan PDF</button></div>
+<div class="page" id="page"></div>
+<script src="../../02_Design_System/reference/logic.js"></script>
+<script src="data.js"></script>
+<script src="screens/report.js"></script>
+<script>
+  var q = new URLSearchParams(location.search);
+  var r = q.get("r") || "r1", n = Number(q.get("n")) || 3;
+  document.title = window.reportFileName(r, n);
+  document.getElementById("page").innerHTML = window.reportHTML(r, n);
+</script>
+</body>
+</html>

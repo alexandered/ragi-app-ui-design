@@ -1,0 +1,10 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Unprocessed drops are scratch; keep the folder, ignore its contents.
+_inbox/*
+!_inbox/.gitkeep

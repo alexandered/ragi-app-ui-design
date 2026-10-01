@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAGI Baking Academy Apps: komponen</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  /* sheet chrome only (not part of the design system) */
+  .sh-head { position: static; z-index: 50; display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; justify-content: space-between; padding: var(--s-3) var(--s-6); background: var(--c-ink); color: var(--c-on-ink); }
+  .sh-head h1 { margin: 0; font: 700 var(--t-title-m-size)/var(--t-title-m-line) var(--font-heading); }
+  .sh-head h1 span { color: var(--c-gold); }
+  .sh-head nav { display: flex; gap: var(--s-2); overflow-x: auto; flex: 1 1 100%; order: 3; padding-bottom: 2px; scrollbar-width: none; }
+  .sh-head a { white-space: nowrap; }
+  .sh-head a { color: var(--c-on-ink); font: 500 var(--t-caption-size)/1 var(--font-heading); text-decoration: none; padding: var(--s-2) var(--s-3); border-radius: var(--r-full); box-shadow: inset 0 0 0 1.5px var(--c-gold); }
+  .sh-main { max-width: 1180px; margin: 0 auto; padding: var(--s-6); display: grid; gap: var(--s-10); }
+  .sh-sec > h2 { margin: 0 0 var(--s-1); font: 700 var(--t-title-l-size)/var(--t-title-l-line) var(--font-heading); }
+  .sh-sec > p { margin: 0 0 var(--s-5); color: var(--c-body); max-width: 70ch; }
+  .sh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: var(--s-5); align-items: start; }
+  .sh-spec { display: grid; gap: var(--s-3); align-content: start; }
+  .sh-spec > h3 { margin: 0; font: 600 var(--t-overline-size)/var(--t-overline-line) var(--font-heading); letter-spacing: var(--t-overline-tracking); text-transform: uppercase; color: var(--c-body); }
+  .sh-stage { position: relative; background: var(--c-page); border-radius: var(--r-lg); box-shadow: inset 0 0 0 2px var(--c-line); padding: var(--s-4); display: grid; gap: var(--s-3); overflow: hidden; }
+  .sh-stage--white { background: var(--c-surface); }
+  .sh-stage--ink { background: var(--c-ink); color: var(--c-on-ink); }
+  .sh-phone { max-width: 390px; }
+  .sh-overlay { min-height: 380px; align-content: start; }
+  .sh-row { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; }
+  .sh-sw { display: grid; gap: 2px; padding: var(--s-3); border-radius: var(--r-md); min-height: 84px; align-content: end; font: 600 var(--t-caption-size)/var(--t-caption-line) var(--font-heading); box-shadow: inset 0 0 0 2px var(--c-line); }
+  .sh-sw small { font-weight: 400; opacity: .9; }
+  .sh-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: var(--s-2); }
+  .sh-icons div { display: grid; justify-items: center; gap: var(--s-1); padding: var(--s-3) var(--s-1); background: var(--c-surface); border-radius: var(--r-md); font: 400 11px/1.2 var(--font-heading); text-align: center; word-break: break-all; }
+  .sh-note { font: 400 var(--t-caption-size)/var(--t-caption-line) var(--font-heading); color: var(--c-body); margin: 0; }
+  .sh-tag { display: inline-block; }
+</style>
+</head>
+<body>
+<header class="sh-head">
+  <h1>RAGI <span>komponen</span> <small style="font-weight:400;font-size:var(--t-caption-size);opacity:.8">v0.1 · stage 2</small></h1>
+  <nav aria-label="Bagian">
+    <a href="#warna">Warna &amp; tipe</a><a href="#tombol">Tombol</a><a href="#field">Field</a><a href="#pilihan">Pilihan</a><a href="#badge">Badge</a><a href="#kartu">Kartu</a><a href="#nav">Navigasi</a><a href="#overlay">Overlay</a><a href="#feedback">Status</a><a href="#bahan">Bahan</a><a href="#metrik">Metrik</a><a href="#bandingkan">Bandingkan</a><a href="#skala">Skala</a><a href="#ikon">Ikon</a>
+  </nav>
+  <button class="btn btn--gold btn--sm" data-toggle-text aria-pressed="false">Teks 130 %</button>
+</header>
+
+<main class="sh-main">
+
+<!-- ============ WARNA & TIPE ============ -->
+<section class="sh-sec" id="warna">
+  <h2>Warna &amp; tipe</h2>
+  <p>Palet resmi dari brand guide (emas, hitam, putih). Emas hanya untuk isian dan dekorasi; teks di atas emas selalu hitam. Lihat <a href="contrast-report.md">contrast-report.md</a>.</p>
+  <div class="sh-grid">
+    <div class="sh-spec"><h3>Merek (resmi)</h3>
+      <div class="sh-stage sh-stage--white" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="sh-sw" style="background:var(--c-gold);color:var(--c-on-gold)">Ragi Gold<small>#D4B277</small></div>
+        <div class="sh-sw" style="background:var(--c-ink);color:var(--c-on-ink)">Blackout<small>#1C1717</small></div>
+        <div class="sh-sw" style="background:var(--c-page);color:var(--c-ink)">White Hall<small>#F2F2F2</small></div>
+      </div></div>
+    <div class="sh-spec"><h3>Turunan</h3>
+      <div class="sh-stage sh-stage--white" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="sh-sw" style="background:var(--c-gold-tint)">Gold tint</div>
+        <div class="sh-sw" style="background:var(--c-surface);color:var(--c-gold-deep)">Gold deep</div>
+        <div class="sh-sw" style="background:var(--c-surface);color:var(--c-body)">Body</div>
+        <div class="sh-sw" style="background:var(--c-surface);color:var(--c-muted)">Muted</div>
+        <div class="sh-sw" style="background:var(--c-line)">Line</div>
+        <div class="sh-sw" style="background:var(--c-line-strong);color:var(--c-surface)">Line strong</div>
+      </div></div>
+    <div class="sh-spec"><h3>Verdict (ikon + label + warna)</h3>
+      <div class="sh-stage sh-stage--white" style="grid-template-columns:1fr 1fr 1fr">
+        <div class="sh-sw" style="background:var(--c-berhasil-fill);color:var(--c-berhasil-ink)">Berhasil</div>
+        <div class="sh-sw" style="background:var(--c-gagal-fill);color:var(--c-gagal-ink)">Gagal</div>
+        <div class="sh-sw" style="background:var(--c-belum-fill);color:var(--c-belum-ink)">Belum dinilai</div>
+      </div></div>
+    <div class="sh-spec"><h3>Tipe: IBM Plex Sans (judul) + Vollkorn (isi)</h3>
+      <div class="sh-stage sh-stage--white">
+        <div class="t-display">Resep Roti Manis</div>
+        <div class="t-title-l">Trial #5 · Gagal</div>
+        <div class="t-title-m">Stable Trial</div>
+        <div class="t-title-s">Tepung terigu protein tinggi</div>
+        <div class="t-overline">Bahan-bahan</div>
+        <div class="t-label">Kadar air · Tipe · Merek</div>
+        <div class="t-number">1.250 g · 93,8 % · 54,8 %</div>
+        <div class="t-caption">Diperbarui 28 Sep 2026</div>
+        <div class="t-body-l">Adonan terlalu lembek, roti kurang mengembang.</div>
+        <div class="t-body">Kurangi susu cair 20 g dan uleni 2 menit lebih lama pada trial berikutnya.</div>
+      </div></div>
+  </div>
+</section>
+
+<!-- ============ TOMBOL ============ -->
+<section class="sh-sec" id="tombol">
+  <h2>Tombol</h2>
+  <p>Label memakai Vollkorn Bold sesuai brand guide. Tinggi minimal 52 px (44 px untuk kecil). Efek tekan memantul; dinonaktifkan saat menyimpan agar tidak terkirim dua kali.</p>
+  <div class="sh-grid">
+    <div class="sh-spec"><h3>Varian</h3><div class="sh-stage sh-stage--white">
+      <button class="btn btn--primary btn--block"><span class="btn__label">Simpan trial</span></button>
+      <button class="btn btn--gold btn--block"><i data-i="plus"></i><span class="btn__label">Trial baru</span></button>
+      <button class="btn btn--tonal btn--block"><i data-i="copy"></i><span class="btn__label">Salin</span></button>
+      <button class="btn btn--secondary btn--block"><i data-i="scaling"></i><span class="btn__label">Skalakan</span></button>
+      <button class="btn btn--danger btn--block"><i data-i="trash-2"></i><span class="btn__label">Hapus trial</span></button>
+      <div class="sh-row"><button class="btn btn--text"><span class="btn__label">Lihat semua</span></button></div>
+    </div></div>
+    <div class="sh-spec"><h3>Status</h3><div class="sh-stage sh-stage--white">
+      <button class="btn btn--primary btn--block is-loading"><span class="btn__label">Menyimpan…</span></button>
+      <button class="btn btn--primary btn--block" disabled><span class="btn__label">Gunakan</span></button>
+      <div class="sh-row"><button class="btn btn--primary btn--sm">Kecil</button><button class="btn btn--secondary btn--sm">Kecil</button><button class="btn btn--tonal btn--sm">Kecil</button></div>
+    </div></div>
+    <div class="sh-spec"><h3>Di atas hitam (Splash, Login)</h3><div class="sh-stage sh-stage--ink on-ink">
+      <button class="btn btn--gold btn--block"><span class="btn__label">Masuk</span></button>
+      <button class="btn btn--text" style="color:var(--c-on-ink)"><span class="btn__label">Lupa password?</span></button>
+    </div></div>
+    <div class="sh-spec"><h3>Ikon &amp; FAB</h3><div class="sh-stage sh-stage--white"><div class="sh-row">
+      <button class="btn-icon" aria-label="Kembali"><i data-i="arrow-left"></i></button>
+      <button class="btn-icon" aria-label="Menu"><i data-i="ellipsis-vertical"></i></button>
+      <button class="btn-icon btn-icon--tonal" aria-label="Edit"><i data-i="pencil"></i></button>
+      <button class="fab"><i data-i="plus"></i>Trial baru</button>
+    </div></div></div>
+    <div class="sh-spec"><h3>Aksi utama + kartu aksi (S8)</h3><div class="sh-stage">
+      <button class="btn btn--gold btn--block"><i data-i="copy"></i><span class="btn__label">Gunakan untuk batch berikutnya</span></button>
+      <div class="act-row">
+        <button class="act-tile"><i data-i="scaling"></i><span>Skalakan</span></button>
+        <button class="act-tile"><i data-i="git-compare"></i><span>Bandingkan</span></button>
+        <button class="act-tile"><i data-i="file-text"></i><span>Ekspor PDF</span></button>
+      </div>
+      <div class="act-row">
+        <button class="act-tile"><i data-i="star"></i><span>Jadikan Stable Trial</span></button>
+        <button class="act-tile"><i data-i="git-compare"></i><span>Bandingkan</span></button>
+        <button class="act-tile"><i data-i="file-text"></i><span>Ekspor PDF</span></button>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ FIELD ============ -->
+<section class="sh-sec" id="field">
+  <h2>Field</h2>
+  <p>Bingkai tebal 2 px berkontras minimal 3:1. Field gram selalu menampilkan sufiks “g” dan menerima koma atau titik (BR-05, BR-06).</p>
+  <div class="sh-grid">
+    <div class="sh-spec"><h3>Teks</h3><div class="sh-stage sh-stage--white">
+      <div class="field"><label class="field__label">Nama resep <span class="req">*</span></label><input class="input" placeholder="mis. Roti sobek keju"><span class="field__hint">1 sampai 100 karakter</span></div>
+      <div class="field"><label class="field__label">Nama resep</label><input class="input is-focus" value="Roti sobek keju"></div>
+      <div class="field is-error"><label class="field__label">Email</label><input class="input" value="siswa@ragi"><span class="field__error"><i data-i="circle-alert" class="icon--sm"></i>Format email belum benar</span></div>
+      <div class="field"><label class="field__label">Email</label><input class="input" value="siswa@ragi.id" disabled></div>
+    </div></div>
+    <div class="sh-spec"><h3>Cari, password, pilih</h3><div class="sh-stage sh-stage--white">
+      <div class="input-wrap search"><i data-i="search"></i><input class="input" placeholder="Cari resep" aria-label="Cari resep"></div>
+      <div class="field"><label class="field__label">Password</label><div class="input-wrap input-wrap--right"><input class="input" type="password" value="rahasia123"><button class="btn-icon" aria-label="Tampilkan password"><i data-i="eye"></i></button></div></div>
+      <div class="field"><label class="field__label">Kategori <span class="req">*</span></label><button class="select"><span class="select__value is-empty">Pilih kategori</span><i data-i="chevron-down"></i></button></div>
+      <div class="field"><label class="field__label">Kategori</label><button class="select"><span class="select__value">Roti</span><i data-i="chevron-down"></i></button></div>
+      <div class="field"><label class="field__label">Nama resep</label><input class="input" value="Roti sobek keju"><span class="field__warn"><i data-i="triangle-alert" class="icon--sm"></i>Kamu sudah punya resep dengan nama ini</span></div>
+    </div></div>
+    <div class="sh-spec"><h3>Gram (BR-06)</h3><div class="sh-stage sh-stage--white">
+      <div class="field"><label class="field__label">Jumlah</label><div class="gram"><input inputmode="decimal" value="1.250" aria-label="Jumlah dalam gram"><span class="gram__unit">g</span></div></div>
+      <div class="field"><label class="field__label">Jumlah</label><div class="gram"><input inputmode="decimal" value="0,5"><span class="gram__unit">g</span></div></div>
+      <div class="field is-error"><label class="field__label">Jumlah</label><div class="gram"><input inputmode="decimal" value="0"><span class="gram__unit">g</span></div><span class="field__error"><i data-i="circle-alert" class="icon--sm"></i>Jumlah harus lebih dari 0</span></div>
+    </div></div>
+    <div class="sh-spec"><h3>Area teks</h3><div class="sh-stage sh-stage--white">
+      <div class="field"><label class="field__label">Perubahan untuk trial berikutnya</label><textarea class="textarea" placeholder="Apa yang mau kamu ubah?">Kurangi susu cair 20 g.</textarea><span class="textarea__count">24 / 2.000</span></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ PILIHAN ============ -->
+<section class="sh-sec" id="pilihan">
+  <h2>Chip, segmented, pemilih verdict</h2>
+  <div class="sh-grid">
+    <div class="sh-spec"><h3>Chip (filter kategori, tipe bahan)</h3><div class="sh-stage sh-stage--white">
+      <div class="chip-grid" id="chips">
+        <button class="chip" aria-pressed="true">Semua</button><button class="chip" aria-pressed="false">Roti</button><button class="chip" aria-pressed="false">Cake</button><button class="chip" aria-pressed="false">Pastry</button><button class="chip" aria-pressed="false">Cookies</button><button class="chip" aria-pressed="false">Dessert</button>
+      </div>
+      <p class="sh-note">Chip terpilih: isian emas, teks hitam, dan status dibaca layar (aria-pressed).</p>
+    </div></div>
+    <div class="sh-spec"><h3>Segmented (filter verdict O6, cakupan Chef)</h3><div class="sh-stage sh-stage--white">
+      <div class="segmented" data-seg><button aria-pressed="true">Siswa</button><button aria-pressed="false">Resep</button></div>
+      <div class="chip-row" style="padding-left:0"><button class="chip" aria-pressed="true">Semua</button><button class="chip" aria-pressed="false"><i data-i="circle-check" class="icon--sm"></i>Berhasil</button><button class="chip" aria-pressed="false"><i data-i="circle-x" class="icon--sm"></i>Gagal</button><button class="chip" aria-pressed="false"><i data-i="hourglass" class="icon--sm"></i>Belum dinilai</button></div>
+    </div></div>
+    <div class="sh-spec"><h3>Pemilih verdict (TRL-04, O1)</h3><div class="sh-stage sh-stage--white">
+      <div class="verdict-picker" data-vp>
+        <button data-v="berhasil" aria-pressed="true"><i data-i="circle-check"></i>Berhasil</button>
+        <button data-v="gagal" aria-pressed="false"><i data-i="circle-x"></i>Gagal</button>
+        <button data-v="belum" aria-pressed="false"><i data-i="hourglass"></i>Belum dinilai</button>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ BADGE ============ -->
+<section class="sh-sec" id="badge">
+  <h2>Badge</h2>
+  <p>Verdict tidak pernah hanya warna: selalu ikon + teks + warna. Badge CR menandai tambahan lingkup yang belum disetujui (D-009).</p>
+  <div class="sh-grid">
+    <div class="sh-spec"><h3>Verdict &amp; Stable</h3><div class="sh-stage sh-stage--white"><div class="sh-row">
+      <span class="badge badge--berhasil"><i data-i="circle-check"></i>Berhasil</span>
+      <span class="badge badge--gagal"><i data-i="circle-x"></i>Gagal</span>
+      <span class="badge badge--belum"><i data-i="hourglass"></i>Belum dinilai</span>
+      <span class="badge badge--stable badge--pop"><i data-i="star"></i>Stable</span>
+    </div></div></div>
+    <div class="sh-spec"><h3>Sumber, kategori, CR, persen</h3><div class="sh-stage sh-stage--white"><div class="sh-row">
+      <span class="badge badge--source"><i data-i="copy"></i>Salinan Trial #3</span>
+      <span class="badge badge--source"><i data-i="scaling"></i>Skala dari Trial #2: 12 → 24 porsi</span>
+      <span class="badge badge--category">Roti</span>
+      <span class="badge badge--cr">CR-01</span><span class="badge badge--cr">CR-02</span>
+      <span class="pct">93,8 %</span>
+    </div></div></div>
+    <div class="sh-spec"><h3>Avatar inisial</h3><div class="sh-stage sh-stage--white"><div class="sh-row">
+      <span class="avatar" aria-label="Sari Wulandari">SW</span><span class="avatar avatar--lg" aria-label="Budi Santoso">BS</span>
+    </div></div></div>
+  </div>
+</section>
+
+<!-- ============ KARTU & BARIS ============ -->
+<section class="sh-sec" id="kartu">
+  <h2>Kartu &amp; baris daftar</h2>
+  <p>Kartu Stable Trial adalah elemen paling besar dan ramah di Detail Resep. Bentuk membulat besar sebagai sentuhan playful (D-013).</p>
+  <div class="sh-grid">
+    <div class="sh-spec sh-phone"><h3>Kartu hero (Beranda)</h3><div class="sh-stage">
+      <div class="card card--hero">
+        <div class="t-caption">Selamat datang kembali</div>
+        <div class="t-title-l" style="margin:var(--s-1) 0 var(--s-4)">Halo, Sari! Siap bereksperimen?</div>
+        <button class="btn btn--primary"><i data-i="plus"></i><span class="btn__label">Trial baru</span></button>
+      </div></div></div>
+    <div class="sh-spec sh-phone"><h3>Kartu Stable Trial</h3><div class="sh-stage">
+      <div class="card card--stable celebrate" id="stable-card">
+        <span class="spark" style="left:44px;top:30px"></span><span class="spark" style="left:44px;top:30px"></span><span class="spark" style="left:44px;top:30px"></span><span class="spark" style="left:44px;top:30px"></span>
+        <div class="sh-row" style="justify-content:space-between"><span class="badge badge--stable"><i data-i="star"></i>Stable Trial</span><span class="t-caption">28 Sep 2026</span></div>
+        <div class="t-title-l" style="margin:var(--s-3) 0 var(--s-1)">Trial #3</div>
+        <div class="t-body">12 porsi · hidrasi 54,8 % · lemak 9,4 %</div>
+      </div>
+      <button class="btn btn--tonal btn--sm" onclick="var c=document.getElementById('stable-card');c.classList.remove('celebrate');void c.offsetWidth;c.classList.add('celebrate');c.querySelectorAll('.spark').forEach(function(s){s.style.animation='none';void s.offsetWidth;s.style.animation=''})">Putar animasi Stable</button>
+      <div class="card card--empty-stable"><div class="t-title-s">Belum ada Stable Trial</div><p class="sh-note">Beri verdict Berhasil pada sebuah trial, lalu jadikan Stable.</p></div>
+    </div></div>
+    <div class="sh-spec sh-phone"><h3>Foto resep (isi dari admin)</h3><div class="sh-stage"><div class="stack">
+      <div class="photo is-fallback" role="img" aria-label="Foto resep belum tersedia"><i data-i="croissant"></i></div>
+      <div class="list"><div class="row"><span class="thumb is-fallback" aria-hidden="true"><i data-i="cake"></i></span><div class="row__main"><span class="row__title">Cheesecake</span><span class="row__meta">0 trial · diperbarui 20 Sep 2026</span><span class="row__tags"><span class="badge badge--category">Dessert</span></span></div><i data-i="chevron-right" class="chev"></i></div></div>
+      <p class="sh-note">Foto asli dimuat dari backend. Jika kosong atau gagal dimuat, tampil ikon kategori di atas warna emas lembut seperti ini.</p>
+    </div></div></div>
+    <div class="sh-spec sh-phone"><h3>Baris resep, trial, siswa</h3><div class="sh-stage"><div class="list">
+      <button class="row"><span class="row__main"><span class="row__title">Roti sobek keju</span><span class="row__meta">5 trial · diperbarui 28 Sep</span><span class="row__tags"><span class="badge badge--category">Roti</span><span class="badge badge--stable"><i data-i="star"></i>Stable</span></span></span><i data-i="chevron-right" class="chev"></i></button>
+      <button class="row"><span class="row__main"><span class="row__title">Trial #5 · 12 porsi</span><span class="row__meta">28 Sep 2026</span><span class="row__excerpt">Adonan terlalu lembek, kurang mengembang.</span><span class="row__tags"><span class="badge badge--gagal"><i data-i="circle-x"></i>Gagal</span><span class="badge badge--source"><i data-i="copy"></i>Salinan Trial #3</span></span></span><i data-i="chevron-right" class="chev"></i></button>
+      <button class="row"><span class="avatar">BS</span><span class="row__main"><span class="row__title">Budi Santoso</span><span class="row__meta">budi@ragi.id · 8 resep</span></span><i data-i="chevron-right" class="chev"></i></button>
+    </div></div></div>
+  </div>
+</section>
+
+<!-- ============ NAVIGASI ============ -->
+<section class="sh-sec" id="nav">
+  <h2>App bar &amp; tab bar</h2>
+  <p>Satu set 3 tab untuk semua akun: Beranda, Resep, Profil (D-023 dan D-026, menggantikan D-016). Judul besar untuk layar akar tab: judul kiri, aksi kanan, satu baris.</p>
+  <div class="sh-grid">
+    <div class="sh-spec sh-phone"><h3>App bar</h3><div class="sh-stage" style="padding:0">
+      <div class="appbar"><button class="btn-icon" aria-label="Kembali"><i data-i="arrow-left"></i></button><div class="appbar__title">Roti sobek keju</div><button class="btn-icon" aria-label="Menu"><i data-i="ellipsis-vertical"></i></button></div>
+      <div class="appbar appbar--large"><div class="appbar__display">Resep</div><button class="btn-icon btn-icon--tonal" aria-label="Buat resep"><i data-i="plus"></i></button></div>
+    </div></div>
+    <div class="sh-spec sh-phone"><h3>Tab bar (semua akun)</h3><div class="sh-stage" style="padding:0">
+      <div class="tabbar" data-tabs>
+        <button class="tab is-active"><span class="tab__pill"><i data-i="house"></i></span>Beranda</button>
+        <button class="tab"><span class="tab__pill"><i data-i="book-open"></i></span>Resep</button>
+        <button class="tab"><span class="tab__pill"><i data-i="user"></i></span>Profil</button>
+      </div></div></div>
+  </div>
+</section>
+
+<!-- ============ OVERLAY ============ -->
+<section class="sh-sec" id="overlay">
+  <h2>Sheet, dialog, snackbar, banner</h2>
+  <div class="sh-grid">
+    <div class="sh-spec sh-phone"><h3>Sheet: verdict (O1)</h3><div class="sh-stage sh-overlay" style="min-height:440px">
+      <div class="scrim"></div>
+      <div class="sheet"><div class="sheet__grab"></div><h4 class="sheet__title">Beri verdict</h4>
+        <div class="verdict-picker" data-vp><button data-v="berhasil" aria-pressed="false"><i data-i="circle-check"></i>Berhasil</button><button data-v="gagal" aria-pressed="true"><i data-i="circle-x"></i>Gagal</button><button data-v="belum" aria-pressed="false"><i data-i="hourglass"></i>Belum dinilai</button></div>
+        <div class="field" style="margin:var(--s-4) 0"><label class="field__label">Hasil</label><textarea class="textarea" style="min-height:80px">Adonan terlalu lembek.</textarea></div>
+        <button class="btn btn--primary btn--block">Simpan</button></div>
+    </div></div>
+    <div class="sh-spec sh-phone"><h3>Dialog (O7): pindahkan Stable</h3><div class="sh-stage sh-overlay">
+      <div class="scrim"></div>
+      <div class="dialog"><h4 class="dialog__title">Pindahkan Stable Trial dari Trial #3 ke Trial #5?</h4><p class="dialog__body">Trial #3 tidak lagi ditandai Stable.</p>
+        <div class="dialog__actions"><button class="btn btn--secondary">Batal</button><button class="btn btn--primary">Pindahkan</button></div></div>
+    </div></div>
+    <div class="sh-spec sh-phone"><h3>Dialog: hapus (destruktif)</h3><div class="sh-stage sh-overlay">
+      <div class="scrim"></div>
+      <div class="dialog"><h4 class="dialog__title">Hapus trial?</h4><p class="dialog__body">Ini adalah Stable Trial. Resep tidak akan punya Stable Trial setelah dihapus.</p>
+        <div class="dialog__actions"><button class="btn btn--secondary">Batal</button><button class="btn btn--danger">Hapus</button></div></div>
+    </div></div>
+    <div class="sh-spec sh-phone"><h3>Snackbar &amp; banner</h3><div class="sh-stage sh-stage--white">
+      <div class="snackbar"><span class="snackbar__msg">Bahan “Gula pasir” dihapus</span><button class="snackbar__action">Urungkan</button></div>
+      <div class="snackbar"><i data-i="circle-check" style="margin-left:0"></i><span class="snackbar__msg">Password berhasil diubah</span></div>
+      <div class="banner banner--offline"><i data-i="wifi-off"></i>Kamu sedang offline. Perubahan tidak bisa disimpan.</div>
+      <div class="banner banner--error"><i data-i="circle-alert"></i><span>Gagal memuat resep.</span><button class="btn btn--sm btn--danger banner__action">Coba lagi</button></div>
+      <div class="banner banner--warn"><i data-i="triangle-alert"></i>Jumlah hasil skala &lt; 0,01 g pada satu bahan.</div>
+      <div class="banner banner--info"><i data-i="info"></i>Sesi berakhir, silakan login kembali.</div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ STATUS ============ -->
+<section class="sh-sec" id="feedback">
+  <h2>Status: muat, kosong, error</h2>
+  <div class="sh-grid">
+    <div class="sh-spec sh-phone"><h3>Skeleton (daftar memuat)</h3><div class="sh-stage"><div class="list">
+      <div class="skeleton" style="height:84px;border-radius:var(--r-lg)"></div><div class="skeleton" style="height:84px;border-radius:var(--r-lg)"></div><div class="skeleton" style="height:84px;border-radius:var(--r-lg)"></div>
+    </div></div></div>
+    <div class="sh-spec sh-phone"><h3>Kosong pertama kali</h3><div class="sh-stage sh-stage--white"><div class="empty">
+      <div class="empty__art"><i data-i="book-open"></i></div><h4 class="empty__title">Belum ada resep</h4><p class="empty__body">Mulai dari satu resep, lalu catat trial pertamamu.</p>
+      <button class="btn btn--gold"><i data-i="plus"></i><span class="btn__label">Buat resep pertama</span></button></div></div></div>
+    <div class="sh-spec sh-phone"><h3>Tidak ada hasil</h3><div class="sh-stage sh-stage--white"><div class="empty">
+      <div class="empty__art"><i data-i="search"></i></div><h4 class="empty__title">Tidak ada hasil</h4><p class="empty__body">Coba kata kunci lain atau hapus filter.</p></div></div></div>
+    <div class="sh-spec sh-phone"><h3>Error + coba lagi</h3><div class="sh-stage sh-stage--white"><div class="empty">
+      <div class="empty__art" style="background:var(--c-gagal-fill);color:var(--c-gagal-ink)"><i data-i="circle-alert"></i></div><h4 class="empty__title">Gagal memuat</h4><p class="empty__body">Periksa koneksi internetmu, lalu coba lagi.</p>
+      <button class="btn btn--secondary"><i data-i="refresh-cw"></i><span class="btn__label">Coba lagi</span></button></div></div></div>
+    <div class="sh-spec sh-phone"><h3>Spinner</h3><div class="sh-stage sh-stage--white"><div class="sh-row"><div class="spinner" role="status" aria-label="Memuat"></div><span class="t-caption">Membuat PDF…</span></div></div></div>
+  </div>
+</section>
+
+<!-- ============ BAHAN ============ -->
+<section class="sh-sec" id="bahan">
+  <h2>Baris bahan <span class="badge badge--cr sh-tag">CR-01</span></h2>
+  <p>Dua garis (D-031): nama dan gram, lalu tipe, baker's % dan “Lanjutan”. Pegangan urut ada di rel kiri pada garis 1, tombol hapus di rel kiri pada garis 2 (alternatif tanpa gestur, O11). Tidak ada label per baris: judul bagian sudah “Bahan (gram)” dan setiap kontrol punya aria-label. Merek (opsional) tampil sebagai keterangan kecil bila diisi; merek dan kadar air ada di balik “Lanjutan”. Garis turun sendiri bila teks besar (130 %) atau layar sempit.</p>
+  <div class="sh-grid">
+    <div class="sh-spec sh-phone"><h3>Baris normal &amp; lanjutan</h3><div class="sh-stage"><div class="list">
+      <div class="ing" role="group" aria-label="Bahan 1">
+        <span class="ing__handle" aria-label="Geser untuk mengurutkan"><i data-i="grip-vertical"></i></span>
+        <div class="ing__top"><div class="ing__main">
+          <div class="field ing__name"><input class="input" value="Tepung terigu" placeholder="mis. Tepung terigu" aria-label="Nama bahan"></div>
+          <div class="field ing__grams"><div class="gram"><input inputmode="decimal" value="500" placeholder="0" aria-label="Jumlah dalam gram"><span class="gram__unit">g</span></div></div>
+        </div></div>
+        <button class="btn-icon ing__del" aria-label="Hapus bahan"><i data-i="trash-2"></i></button>
+        <div class="ing__meta"><div class="field ing__type"><button class="select" aria-label="Tipe bahan"><span class="select__value">Tepung</span><i data-i="chevron-down" class="icon--sm"></i></button></div><span class="pct">93,8 %</span><button class="ing__toggle" aria-expanded="false"><i data-i="sliders-horizontal" class="icon--sm"></i>Lanjutan</button></div>
+        <div class="ing__notes"><span class="ing__brand t-caption">Cakra Kembar</span></div>
+      </div>
+      <div class="ing" role="group" aria-label="Bahan 2">
+        <span class="ing__handle" aria-label="Geser untuk mengurutkan"><i data-i="grip-vertical"></i></span>
+        <div class="ing__top"><div class="ing__main">
+          <div class="field ing__name"><input class="input" value="Susu cair" placeholder="mis. Tepung terigu" aria-label="Nama bahan"></div>
+          <div class="field ing__grams"><div class="gram"><input inputmode="decimal" value="250" placeholder="0" aria-label="Jumlah dalam gram"><span class="gram__unit">g</span></div></div>
+        </div></div>
+        <button class="btn-icon ing__del" aria-label="Hapus bahan"><i data-i="trash-2"></i></button>
+        <div class="ing__meta"><div class="field ing__type"><button class="select" aria-label="Tipe bahan"><span class="select__value">Cairan</span><i data-i="chevron-down" class="icon--sm"></i></button></div><span class="pct">46,9 %</span><button class="ing__toggle" aria-expanded="true"><i data-i="sliders-horizontal" class="icon--sm"></i>Lanjutan</button></div>
+        <div class="ing__adv"><div class="field"><label class="field__label">Merek (opsional)</label><input class="input" value="Ultra"></div><div class="field"><label class="field__label">Kadar air</label><div class="gram"><input inputmode="decimal" value="87"><span class="gram__unit">%</span></div><span class="field__hint">Bawaan Cairan: 100 %. Mengubah tipe mengembalikan nilai bawaan.</span></div></div>
+      </div>
+    </div></div></div>
+    <div class="sh-spec sh-phone"><h3>Belum ada tipe (Simpan ditahan)</h3><div class="sh-stage"><div class="list">
+      <div class="ing is-invalid" role="group" aria-label="Bahan 1">
+        <span class="ing__handle" aria-label="Geser untuk mengurutkan"><i data-i="grip-vertical"></i></span>
+        <div class="ing__top"><div class="ing__main">
+          <div class="field ing__name"><input class="input" value="Gula pasir" placeholder="mis. Tepung terigu" aria-label="Nama bahan"></div>
+          <div class="field ing__grams"><div class="gram"><input inputmode="decimal" value="40" placeholder="0" aria-label="Jumlah dalam gram"><span class="gram__unit">g</span></div></div>
+        </div></div>
+        <button class="btn-icon ing__del" aria-label="Hapus bahan"><i data-i="trash-2"></i></button>
+        <div class="ing__meta"><div class="field ing__type is-error"><button class="select" aria-label="Tipe bahan" aria-invalid="true"><span class="select__value is-empty">Pilih tipe</span><i data-i="chevron-down" class="icon--sm"></i></button></div><span class="pct">—</span><button class="ing__toggle" aria-expanded="false"><i data-i="sliders-horizontal" class="icon--sm"></i>Lanjutan</button></div>
+        <div class="ing__notes"><span class="field__error" role="alert"><i data-i="circle-alert" class="icon--sm"></i>Pilih tipe</span></div>
+      </div>
+    </div></div></div>
+    <div class="sh-spec sh-phone"><h3>Saran nama (O10)</h3><div class="sh-stage sh-overlay" style="min-height:300px;align-content:start"><div class="list">
+      <div class="ing" role="group" aria-label="Bahan 1">
+        <span class="ing__handle" aria-label="Geser untuk mengurutkan"><i data-i="grip-vertical"></i></span>
+        <div class="ing__top"><div class="ing__main">
+          <div class="field ing__name"><input class="input is-focus" value="Te" placeholder="mis. Tepung terigu" aria-label="Nama bahan"></div>
+          <div class="field ing__grams"><div class="gram"><input inputmode="decimal" value="" placeholder="0" aria-label="Jumlah dalam gram"><span class="gram__unit">g</span></div></div>
+        </div>
+          <div class="suggest" role="listbox" style="margin-top:var(--s-1)">
+            <button class="is-hover"><span>Tepung terigu</span><span class="hint">Tepung</span></button>
+            <button><span>Tepung tapioka</span><span class="hint">Tepung</span></button>
+            <button><span>Telur ayam</span><span class="hint">Telur · 75 %</span></button>
+          </div>
+        </div>
+        <button class="btn-icon ing__del" aria-label="Hapus bahan"><i data-i="trash-2"></i></button>
+        <div class="ing__meta"><div class="field ing__type"><button class="select" aria-label="Tipe bahan"><span class="select__value is-empty">Pilih tipe</span><i data-i="chevron-down" class="icon--sm"></i></button></div><span class="pct">—</span><button class="ing__toggle" aria-expanded="false"><i data-i="sliders-horizontal" class="icon--sm"></i>Lanjutan</button></div>
+      </div>
+    </div></div></div>
+    <div class="sh-spec sh-phone"><h3>Pemilih tipe (O2)</h3><div class="sh-stage sh-stage--white"><div class="chip-grid">
+      <button class="chip is-selected"><i data-i="wheat" class="icon--sm"></i>Tepung</button><button class="chip"><i data-i="droplet" class="icon--sm"></i>Cairan</button><button class="chip">Lemak</button><button class="chip">Gula</button><button class="chip">Garam</button><button class="chip">Ragi</button><button class="chip"><i data-i="egg" class="icon--sm"></i>Telur</button><button class="chip">Lainnya</button>
+    </div><p class="sh-note">Ikon hanya untuk tipe yang ada di Lucide; sisanya teks (P-008).</p></div></div>
+  </div>
+</section>
+
+<!-- ============ METRIK ============ -->
+<section class="sh-sec" id="metrik">
+  <h2>Panel metrik adonan <span class="badge badge--cr sh-tag">CR-01</span></h2>
+  <p>Demo langsung memakai contoh PRD (tangzhong). Ubah gram dan angka dihitung ulang seketika, dengan logika yang sama seperti tes (<code>logic.js</code>). Hasil awal harus 93,8 % / 54,8 % / 9,4 % / 7,5 % / 1,7 % / 1,3 %.</p>
+  <div class="sh-grid">
+    <div class="sh-spec sh-phone"><h3>Langsung: ubah gram</h3><div class="sh-stage">
+      <div class="itable" id="demo-rows"></div>
+      <div class="metrics" id="demo-metrics" aria-live="polite"></div>
+      <div class="sh-row"><button class="btn btn--tonal btn--sm" id="demo-noflour">Hapus semua Tepung</button><button class="btn btn--secondary btn--sm" id="demo-reset">Reset</button></div>
+    </div></div>
+    <div class="sh-spec sh-phone"><h3>Tanpa Tepung (tetap bisa disimpan)</h3><div class="sh-stage">
+      <div class="metrics"><div class="metrics__head"><h3><i data-i="calculator"></i>Metrik adonan</h3><span class="badge badge--cr">CR-01</span></div>
+        <div class="metrics__hero"><div class="metric"><span class="metric__label">Berat adonan</span><span class="metric__value">230<small>g</small></span></div><div class="metric"><span class="metric__label">Total tepung</span><span class="metric__value">—</span></div></div>
+        <p class="metrics__hint"><i data-i="info" class="icon--sm"></i>Tambahkan bahan bertipe Tepung untuk menghitung baker's %</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ BANDINGKAN ============ -->
+<section class="sh-sec" id="bandingkan">
+  <h2>Perbandingan trial <span class="badge badge--cr sh-tag">CR-02</span></h2>
+  <p>Keputusan tata letak (dari brief S19): nama bahan melebar penuh, dua nilai di bawahnya, agar muat di 390 px. Baris yang berbeda diberi latar emas lembut dan pil selisih; bahan yang hanya ada di satu trial diberi label “Hanya di Trial #x”. Baris judul (Trial #3 | Trial #5) menempel di atas saat tabel digulir, jadi kolom selalu bernama; verdict, Stable, dan tanggal ada di bawahnya dan ikut tergulir. Baris yang sama dibuat rapat (gram dan baker's % satu garis) supaya perubahan menonjol. Ringkasan di atas tabel menjawab “apa yang berubah” sebelum tabel dibaca.</p>
+  <div class="sh-grid">
+    <div class="sh-spec sh-phone"><h3>Ringkasan perubahan</h3><div class="sh-stage"><div class="cmp-sum" id="demo-cmp-sum"></div></div></div>
+    <div class="sh-spec sh-phone"><h3>Baris bandingkan (data PRD, dihitung dari logic.js)</h3><div class="sh-stage"><div class="cmp" id="demo-cmp"></div>
+      <div class="banner banner--info"><i data-i="info"></i>Porsi sama (12). Bandingkan gram dan baker's % keduanya.</div></div></div>
+  </div>
+</section>
+
+<!-- ============ SKALA ============ -->
+<section class="sh-sec" id="skala">
+  <h2>Pratinjau skala</h2>
+  <p>Faktor, jumlah asli, jumlah baru. Semua tetap gram. Baker's % tidak berubah.</p>
+  <div class="sh-grid">
+    <div class="sh-spec sh-phone"><h3>Sheet skala (S9): 12 → 30 porsi</h3><div class="sh-stage sh-stage--white">
+      <div class="field"><label class="field__label">Porsi tujuan</label><input class="input" inputmode="numeric" value="30" id="scale-target"><span class="field__error" id="scale-err" hidden><i data-i="circle-alert" class="icon--sm"></i>Isi bilangan bulat 1 sampai 9.999</span></div>
+      <div class="sh-row" style="justify-content:space-between"><span class="t-caption">12 porsi</span><span class="scale-factor" id="scale-factor"></span></div>
+      <div id="scale-rows"></div>
+      <button class="btn btn--primary btn--block" id="scale-go">Gunakan sebagai trial baru</button>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ IKON ============ -->
+<section class="sh-sec" id="ikon">
+  <h2>Ikon (Lucide, ISC)</h2>
+  <p>Diambil dari <code>icons/</code> lewat <code>icons.js</code>. Pakai <code>&lt;i data-i="nama"&gt;&lt;/i&gt;</code>. Peta konsep ke nama ada di <a href="icon-map.md">icon-map.md</a>.</p>
+  <div class="sh-icons" id="icon-grid"></div>
+</section>
+
+</main>
+
+<script src="icons.js"></script>
+<script src="logic.js"></script>
+<script src="ui.js"></script>
+<script>
+(function () {
+  var L = window.RAGI;
+
+  // toggles on the sheet itself
+  document.querySelectorAll('#chips .chip').forEach(function (b) { b.addEventListener('click', function () { document.querySelectorAll('#chips .chip').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); }); b.setAttribute('aria-pressed', 'true'); }); });
+  document.querySelectorAll('[data-seg] button').forEach(function (b) { b.addEventListener('click', function () { b.parentNode.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); }); b.setAttribute('aria-pressed', 'true'); }); });
+  document.querySelectorAll('[data-vp] button').forEach(function (b) { b.addEventListener('click', function () { b.parentNode.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); }); b.setAttribute('aria-pressed', 'true'); }); });
+  document.querySelectorAll('[data-tabs] .tab').forEach(function (b) { b.addEventListener('click', function () { b.parentNode.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('is-active'); }); b.classList.add('is-active'); }); });
+
+  // ---- live metrics demo (PRD MET-01 example) ----
+  var base = [
+    { name: 'Tepung terigu', type: 'Tepung', grams: 500 },
+    { name: 'Tepung (tangzhong)', type: 'Tepung', grams: 33.33 },
+    { name: 'Air (tangzhong)', type: 'Cairan', grams: 66.67 },
+    { name: 'Susu cair', type: 'Cairan', grams: 250, water: 87 },
+    { name: 'Gula pasir', type: 'Gula', grams: 40 },
+    { name: 'Garam', type: 'Garam', grams: 9 },
+    { name: 'Ragi instan', type: 'Ragi', grams: 7 },
+    { name: 'Butter', type: 'Lemak', grams: 50, water: 16 }
+  ];
+  var rows = JSON.parse(JSON.stringify(base));
+  var rowsEl = document.getElementById('demo-rows'), metEl = document.getElementById('demo-metrics');
+  function renderRows() {
+    rowsEl.innerHTML = rows.map(function (r, i) {
+      return '<div class="irow"><div class="irow__name">' + r.name + '</div>' +
+        '<div class="irow__qty"><span class="gram" style="min-height:var(--z-tap);display:inline-flex;width:120px"><input data-i="' + i + '" inputmode="decimal" value="' + L.fmtNum(r.grams) + '" aria-label="' + r.name + ' dalam gram" style="min-height:40px"><span class="gram__unit">g</span></span></div>' +
+        '<div class="irow__sub">' + r.type + '</div><div class="irow__pct"><span class="pct" data-pct="' + i + '"></span></div></div>';
+    }).join('');
+  }
+  function renderMetrics(animate) {
+    var m = L.metrics(rows);
+    rows.forEach(function (r, i) { var el = rowsEl.querySelector('[data-pct="' + i + '"]'); if (el) el.textContent = m.hasFlour ? L.fmtPct(m.rowPct(r)) : '—'; });
+    var cell = function (label, v) { return '<div class="metric"><span class="metric__label">' + label + '</span><span class="metric__value">' + v + '</span></div>'; };
+    var u = function (n) { return L.fmtNum(n) + '<small>g</small>'; };
+    metEl.innerHTML = '<div class="metrics__head"><h3><svg class="icon"><use href="#i-calculator"/></svg>Metrik adonan</h3><span class="badge badge--cr">CR-01</span></div>' +
+      '<div class="metrics__hero">' + cell('Berat adonan', u(m.dough)) + cell('Total tepung', m.hasFlour ? u(m.flour) : '—') + cell('Total air', u(m.water)) + cell('Hidrasi', m.hasFlour ? L.fmtPct(m.hydration) : '—') + '</div>' +
+      (m.hasFlour ? '<div class="metrics__grid">' + cell('Lemak', L.fmtPct(m.fat)) + cell('Gula', L.fmtPct(m.sugar)) + cell('Garam', L.fmtPct(m.salt)) + cell('Ragi', L.fmtPct(m.yeast)) + '</div>'
+        : '<p class="metrics__hint"><svg class="icon icon--sm"><use href="#i-info"/></svg>Tambahkan bahan bertipe Tepung untuk menghitung baker\'s %</p>');
+    if (animate) { metEl.classList.remove('is-changing'); void metEl.offsetWidth; metEl.classList.add('is-changing'); }
+  }
+  rowsEl.addEventListener('input', function (e) { var i = e.target.getAttribute('data-i'); if (i === null) return; var v = L.parseNum(e.target.value); rows[i].grams = isNaN(v) ? 0 : v; renderMetrics(true); });
+  rowsEl.addEventListener('change', function (e) { var i = e.target.getAttribute('data-i'); if (i !== null) e.target.value = L.fmtNum(rows[i].grams); });
+  document.getElementById('demo-noflour').onclick = function () { rows.forEach(function (r) { if (r.type === 'Tepung') r.type = 'Lainnya'; }); renderRows(); renderMetrics(true); };
+  document.getElementById('demo-reset').onclick = function () { rows = JSON.parse(JSON.stringify(base)); renderRows(); renderMetrics(true); };
+  renderRows(); renderMetrics(false);
+
+  // ---- compare demo (PRD CMP-01 example) ----
+  var flour = [{ name: 'Tepung terigu', type: 'Tepung', grams: 500 }, { name: 'Tepung (tangzhong)', type: 'Tepung', grams: 33.33 }];
+  var A = { portions: 12, rows: flour.concat([{ name: 'Butter', type: 'Lemak', grams: 50, water: 16 }, { name: 'Susu cair', type: 'Cairan', grams: 250, water: 87 }]) };
+  var B = { portions: 12, rows: flour.concat([{ name: 'Butter', type: 'Lemak', grams: 60, water: 16 }, { name: 'Susu cair', type: 'Cairan', grams: 250, water: 87 }, { name: 'Susu bubuk', type: 'Lainnya', grams: 20 }]) };
+  var c = L.compare(A, B), cm = document.getElementById('demo-cmp');
+  var h = '<div class="cmp__titles"><span>Trial #3</span><span>Trial #5</span></div><div class="cmp__meta"><div class="cmp__col-meta"><span class="badge badge--stable"><svg class="icon"><use href="#i-star"/></svg>Stable</span><span class="cmp__when">15 Sep 2026 · 12 porsi</span></div><div class="cmp__col-meta"><span class="badge badge--gagal"><svg class="icon"><use href="#i-circle-x"/></svg>Gagal</span><span class="cmp__when">28 Sep 2026 · 12 porsi</span></div></div>';
+  h += '<div class="cmp__row is-changed"><div class="cmp__name">Lemak<span class="cmp__diff">' + L.fmtDiff(c.diff.fat, 'pp') + '</span></div><div class="cmp__cell">' + L.fmtPct(c.ta.fat) + '</div><div class="cmp__cell">' + L.fmtPct(c.tb.fat) + '</div></div>';
+  h += '<div class="cmp__row is-changed"><div class="cmp__name">Berat adonan<span class="cmp__diff">' + L.fmtDiff(c.diff.dough, 'g') + '</span></div><div class="cmp__cell">' + L.fmtG(c.ta.dough) + '</div><div class="cmp__cell">' + L.fmtG(c.tb.dough) + '</div></div>';
+  c.rows.forEach(function (r) {
+    var cell = function (x, p) { return x ? '<div class="cmp__cell">' + L.fmtG(x.grams) + '<small>' + (p === null ? '—' : L.fmtPct(p)) + '</small></div>' : '<div class="cmp__cell is-none">—</div>'; };
+    var tag = r.onlyIn ? '<span class="cmp__only">Hanya di Trial #' + (r.onlyIn === 'A' ? 3 : 5) + '</span>' : (r.changed && r.dGrams !== null ? '<span class="cmp__diff">' + L.fmtDiff(r.dGrams, 'g') + ' · ' + L.fmtDiff(r.dPct, 'pp') + '</span>' : '');
+    h += '<div class="cmp__row' + (r.changed ? ' is-changed' : ' is-same') + '"><div class="cmp__name">' + r.name + tag + '</div>' + cell(r.a, r.pctA) + cell(r.b, r.pctB) + '</div>';
+  });
+  cm.innerHTML = h;
+  var chg = c.rows.filter(function (r) { return r.changed; });
+  document.getElementById('demo-cmp-sum').innerHTML = '<p class="cmp-sum__title">' + chg.length + ' bahan berubah</p><ul class="cmp-sum__list">' + chg.map(function (r) { return '<li class="cmp-sum__item"><span>' + r.name + '</span><b>' + (r.onlyIn ? 'hanya di Trial #' + (r.onlyIn === 'A' ? 3 : 5) : L.fmtDiff(r.dGrams, 'g')) + '</b></li>'; }).join("") + '</ul>';
+
+  // ---- scale demo ----
+  var srcRows = [{ name: 'Tepung terigu', grams: 500 }, { name: 'Telur', grams: 150 }, { name: 'Ragi instan', grams: 0.3 }];
+  var tgt = document.getElementById('scale-target'), err = document.getElementById('scale-err'), go = document.getElementById('scale-go');
+  function renderScale() {
+    var n = L.validPortions(tgt.value), bad = isNaN(n);
+    err.hidden = !bad; go.disabled = bad; tgt.parentNode.classList.toggle('is-error', bad);
+    if (bad) { document.getElementById('scale-factor').textContent = '× —'; document.getElementById('scale-rows').innerHTML = ''; return; }
+    var s = L.scale(srcRows, 12, n);
+    document.getElementById('scale-factor').textContent = '× ' + L.fmtNum(s.factor, 2);
+    document.getElementById('scale-rows').innerHTML = s.rows.map(function (r, i) {
+      return '<div class="scale-row' + (r.tooSmall ? ' is-warn' : '') + '"><span>' + r.name + '</span><span class="from">' + L.fmtG(srcRows[i].grams) + '</span><span aria-hidden="true">→</span><span class="to">' + (r.tooSmall ? '&lt; 0,01 g' : L.fmtG(r.grams)) + '</span></div>';
+    }).join('');
+  }
+  tgt.addEventListener('input', renderScale); renderScale();
+
+  // ---- icon grid ----
+  var g = document.getElementById('icon-grid');
+  Array.prototype.slice.call(document.querySelectorAll('symbol[id^="i-"]')).forEach(function (s) {
+    var n = s.id.slice(2); g.insertAdjacentHTML('beforeend', '<div><svg class="icon"><use href="#i-' + n + '"/></svg>' + n + '</div>');
+  });
+})();
+</script>
+</body>
+</html>
